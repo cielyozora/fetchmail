@@ -3,34 +3,35 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Full Screen Iframe</title>
-  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <title>Elorahub - Mail</title>
+  <!-- Link to Google Fonts for a fancy font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link id="bootstrap-css" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body, html {
       margin: 0;
       padding: 0;
       height: 100%;
       overflow: hidden;
+      font-family: 'Permanent Marker', cursive; /* Apply the fancy font */
+      font-weight: 400;
+      font-style: normal;
+      background: linear-gradient(#141e30, #243b55); /* Default gradient background */
     }
+  
     iframe {
       border: none;
       height: 100%;
       width: 100%;
     }
-    .first-color { 
-      background: #155263; 
-    }
-    .second-color { 
-      background: #ff6f3c; 
-    }
-    .third-color { 
-      background: #ff9a3c; 
-    }
-    .fourth-color { 
-      background: #ffc93c; 
-    }
     .navbar-dark .navbar-nav .nav-link {
-      color: white;
+      color: black; /* Make navbar text black */
+    }
+    .navbar-dark .navbar-toggler {
+      color: black; /* Make navbar toggler icon black */
+      border-color: black; /* Make navbar toggler border black */
     }
     .spinner-container {
       position: fixed;
@@ -48,19 +49,32 @@
       width: 3rem;
       height: 3rem;
     }
+    /* Color Classes */
+    .first-color { 
+      background: #155263; 
+    }
+    .second-color { 
+      background: #ff6f3c; 
+    }
+    .third-color { 
+      background: #ff9a3c; 
+    }
+    .fourth-color { 
+      background: #f5f410;
+    }
   </style>
 </head>
 <body>
   <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark first-color">
-    <a class="navbar-brand" href="#">Elorahub</a>
+  <nav id="navbar" class="navbar navbar-expand-lg navbar-dark first-color">
+    <a class="navbar-brand" href="#" style="color:black;">Elorahub</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
-          <a class="nav-link" href="https://t.me/exiodi">Contact Admin</a>
+          <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="https://t.me/exiodi">Buy</a>
@@ -79,6 +93,7 @@
   <iframe id="myIframe" onload="hideSpinner()"></iframe>
 
   <script>
+    // Function to hide the spinner
     function hideSpinner() {
       document.getElementById('spinnerContainer').style.display = 'none';
     }
@@ -97,6 +112,22 @@
     // Get the email parameter from the URL
     var email = getParameterByName('email');
 
+    // Function to set color scheme based on conditions (example)
+    function setColorScheme() {
+      // Example condition: set color based on some parameter or logic
+      var condition = true; // Replace with your condition
+
+      if (condition) {
+        document.getElementById('navbar').classList.remove('first-color', 'second-color', 'third-color', 'fourth-color');
+        document.getElementById('navbar').classList.add('fourth-color'); // Change class based on condition
+      } else {
+        document.getElementById('navbar').classList.add('fourth-color');
+      }
+    }
+
+    // Call setColorScheme function to set initial color scheme
+    setColorScheme();
+
     // Set the iframe src with the email parameter
     if (email) {
       var iframe = document.getElementById('myIframe');
@@ -107,5 +138,9 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script>
+    // Update body background dynamically using JavaScript
+    document.body.style.background = 'linear-gradient(#141e30, #243b55)';
+  </script>
 </body>
 </html>
