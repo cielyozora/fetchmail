@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Full Screen Iframe</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+    iframe {
+      border: none;
+      height: 100%;
+      width: 100%;
+    }
+    .first-color { 
+      background: #155263; 
+    }
+    .second-color { 
+      background: #ff6f3c; 
+    }
+    .third-color { 
+      background: #ff9a3c; 
+    }
+    .fourth-color { 
+      background: #ffc93c; 
+    }
+    .navbar-dark .navbar-nav .nav-link {
+      color: white;
+    }
+    .spinner-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: rgba(255, 255, 255, 0.8);
+      z-index: 9999;
+    }
+    .spinner-border {
+      width: 3rem;
+      height: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark first-color">
+    <a class="navbar-brand" href="#">Elorahub</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="https://t.me/exiodi">Contact Admin</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="https://t.me/exiodi">Buy</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Loading Spinner -->
+  <div id="spinnerContainer" class="spinner-container">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+
+  <iframe id="myIframe" onload="hideSpinner()"></iframe>
+
+  <script>
+    function hideSpinner() {
+      document.getElementById('spinnerContainer').style.display = 'none';
+    }
+
+    // Function to get URL parameters
+    function getParameterByName(name, url) {
+      if (!url) url = window.location.href;
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+          results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Get the email parameter from the URL
+    var email = getParameterByName('email');
+
+    // Set the iframe src with the email parameter
+    if (email) {
+      var iframe = document.getElementById('myIframe');
+      iframe.src = "https://script.google.com/macros/s/AKfycbwfWttgtt0V2YM8O9aseoAwrdFCVZLqxV8mv0N9Rzreb5SRYRBuT46h3X7HYjk2SYixjQ/exec?email=" + email;
+    }
+  </script>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
