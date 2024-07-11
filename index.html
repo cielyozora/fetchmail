@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,6 @@
       margin: 0;
       padding: 0;
       height: 100%;
-      overflow: hidden;
       font-family: 'Permanent Marker', cursive; /* Apply the fancy font */
       font-weight: 400;
       font-style: normal;
@@ -23,7 +22,7 @@
   
     iframe {
       border: none;
-      height: 100%;
+      height: 100vh; /* Use viewport height for full-screen iframe */
       width: 100%;
     }
     .navbar-dark .navbar-nav .nav-link {
@@ -32,22 +31,6 @@
     .navbar-dark .navbar-toggler {
       color: black; /* Make navbar toggler icon black */
       border-color: black; /* Make navbar toggler border black */
-    }
-    .spinner-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: rgba(255, 255, 255, 0.8);
-      z-index: 9999;
-    }
-    .spinner-border {
-      width: 3rem;
-      height: 3rem;
     }
     /* Color Classes */
     .first-color { 
@@ -83,21 +66,9 @@
     </div>
   </nav>
 
-  <!-- Loading Spinner -->
-  <div id="spinnerContainer" class="spinner-container">
-    <div class="spinner-border text-primary" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
-  </div>
-
-  <iframe id="myIframe" onload="hideSpinner()"></iframe>
+  <iframe id="myIframe"></iframe>
 
   <script>
-    // Function to hide the spinner
-    function hideSpinner() {
-      document.getElementById('spinnerContainer').style.display = 'none';
-    }
-
     // Function to get URL parameters
     function getParameterByName(name, url) {
       if (!url) url = window.location.href;
@@ -138,9 +109,5 @@
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script>
-    // Update body background dynamically using JavaScript
-    document.body.style.background = 'linear-gradient(#141e30, #243b55)';
-  </script>
 </body>
 </html>
