@@ -19,7 +19,7 @@
       font-weight: 400;
       font-style: normal;
     }
-  
+
     iframe {
       border: none;
       height: 100%;
@@ -49,16 +49,16 @@
       height: 3rem;
     }
     /* Color Classes */
-    .first-color { 
-      background: #155263; 
+    .first-color {
+      background: #155263;
     }
-    .second-color { 
-      background: #ff6f3c; 
+    .second-color {
+      background: #ff6f3c;
     }
-    .third-color { 
-      background: #ff9a3c; 
+    .third-color {
+      background: #ff9a3c;
     }
-    .fourth-color { 
+    .fourth-color {
       background: #f5f410;
     }
   </style>
@@ -108,8 +108,14 @@
       return decodeURIComponent(results[2].replace(/\+/g, " "));
     }
 
-    // Get the email parameter from the URL
-    var email = getParameterByName('m');
+    // Function to decode Base64
+    function base64Decode(str) {
+      return atob(str);
+    }
+
+    // Get the email parameter from the URL and decode it
+    var encodedEmail = getParameterByName('m');
+    var email = base64Decode(encodedEmail);
 
     // Function to set color scheme based on conditions (example)
     function setColorScheme() {
@@ -127,7 +133,7 @@
     // Call setColorScheme function to set initial color scheme
     setColorScheme();
 
-    // Set the iframe src with the email parameter
+    // Set the iframe src with the decoded email parameter
     if (email) {
       var iframe = document.getElementById('myIframe');
       iframe.src = "https://script.google.com/macros/s/AKfycbzwJhqj-T3vYkojOidcYMsTo2Wd4Zv-VrmSvLBYdb7cOvXE20NkcweCAa81aq7Q4zLUUA/exec?email=" + email;
