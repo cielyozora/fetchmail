@@ -115,7 +115,7 @@
 
     // Get the email parameter from the URL and decode it
     var encodedEmail = getParameterByName('m');
-    var email = base64Decode(encodedEmail);
+    var email = encodedEmail ? base64Decode(encodedEmail) : 'your@email.com';
 
     // Function to set color scheme based on conditions (example)
     function setColorScheme() {
@@ -134,10 +134,8 @@
     setColorScheme();
 
     // Set the iframe src with the decoded email parameter
-    if (email) {
-      var iframe = document.getElementById('myIframe');
-      iframe.src = "https://script.google.com/macros/s/AKfycbzwJhqj-T3vYkojOidcYMsTo2Wd4Zv-VrmSvLBYdb7cOvXE20NkcweCAa81aq7Q4zLUUA/exec?email=" + email;
-    }
+    var iframe = document.getElementById('myIframe');
+    iframe.src = "https://script.google.com/macros/s/AKfycbzwJhqj-T3vYkojOidcYMsTo2Wd4Zv-VrmSvLBYdb7cOvXE20NkcweCAa81aq7Q4zLUUA/exec?email=" + email;
   </script>
 
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
